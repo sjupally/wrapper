@@ -1,0 +1,20 @@
+{
+  "type":"object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "nirc": {
+      "nirc": "string"
+    },
+    "price": {
+      "type": "double"
+    },
+    "description": {
+      "type": "string"
+    },
+    "publishedDate": {
+      "type": "date"
+    }
+  }
+}
