@@ -1,5 +1,9 @@
-package com.example.entity;
+package com.concretepage.entity;
 
+
+import com.univocity.parsers.annotations.FixedWidth;
+import com.univocity.parsers.annotations.Parsed;
+import com.univocity.parsers.fixed.FieldAlignment;
 
 import javax.persistence.*;
 
@@ -11,6 +15,8 @@ public class Author {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @FixedWidth(value = 20, alignment = FieldAlignment.RIGHT, padding = '0')
+    @Parsed
     @Column(name = "NAME")
     private String name;
 

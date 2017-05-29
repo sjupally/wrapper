@@ -1,8 +1,13 @@
-package com.example.entity;
+package com.concretepage.entity;
 
-import java.util.Date;
+import com.univocity.parsers.annotations.FixedWidth;
+import com.univocity.parsers.annotations.Format;
+import com.univocity.parsers.annotations.Nested;
+import com.univocity.parsers.annotations.Parsed;
+import com.univocity.parsers.fixed.FieldAlignment;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "BOOK")
@@ -12,12 +17,19 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @FixedWidth(value = 30, alignment = FieldAlignment.LEFT, padding = '0')
+    @Parsed
     @Column(name = "TITLE")
     private String title;
 
+    @FixedWidth(value = 30, alignment = FieldAlignment.RIGHT, padding = '0')
+    @Parsed
     @Column(name = "NIRC")
     private String nirc;
 
+    @FixedWidth(value = 35)
+    @Format(formats = "#0.00", options = "decimalSeparator=.")
+    @Parsed
     @Column(name = "price")
     private Double price;
 
@@ -27,15 +39,22 @@ public class Book {
     @Column(name = "PUBLISHED")
     private Date publishedDate;
 
-    public Book() {
+    @Nested
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "AUTHOR_ID")
+    private Author author;
+
+    public  Book() {
+
     }
 
-    public Book(String title, String nirc, Double price, String description, Date publishedDate) {
+    public Book(String title, String nirc, Double price, String description, Date publishedDate, Author author) {
         this.title = title;
         this.nirc = nirc;
         this.price = price;
         this.description = description;
         this.publishedDate = publishedDate;
+        this.author = author;
     }
 
     public long getId() {
@@ -86,9 +105,17 @@ public class Book {
         this.publishedDate = publishedDate;
     }
 
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
+
     @Override
     public String toString() {
-        return "Book{" +
+        return "BookProxy{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", nirc='" + nirc + '\'' +

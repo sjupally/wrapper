@@ -1,0 +1,33 @@
+{
+  "filePath": "C://Logs",
+  "fieldList": [
+    {
+      "name": "title",
+      "type": "String",
+      "subType": "",
+      "size": "15",
+      "format": "X"
+    },
+    {
+      "name": "nirc",
+      "type": "String",
+      "subType": "",
+      "size": "15",
+      "format": "X"
+    },
+    {
+      "name": "price",
+      "type": "",
+      "subType": "",
+      "size": "15",
+      "format": "#0.00"
+    },
+    {
+      "name": "author",
+      "type": "Object",
+      "subType": "name",
+      "size": "15",
+      "format": "#0.00"
+    }
+  ]
+}
