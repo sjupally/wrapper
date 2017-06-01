@@ -6,12 +6,13 @@ import com.univocity.parsers.annotations.Parsed;
 import com.univocity.parsers.fixed.FieldAlignment;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Created by Srikanth on 5/31/2017.
  */
 @Entity
-@Table(name = "BTBMS-DATA-RECORD")
+@Table(name = "TBL_DQSP_FILE_DETAILS")
 public class Record {
     @Transient
     @FixedWidth(value = 2, alignment = FieldAlignment.LEFT, padding = ' ')
@@ -24,91 +25,97 @@ public class Record {
     private String origSysId;
 
     @Id
-    @Column(name = "BTBMS-ORIG-SYS-KEY", unique = true, nullable = false, length = 20)
+    @Column(name = "ORIG_SYSKEY", unique = true, nullable = false, length = 20)
     @FixedWidth(value = 20, alignment = FieldAlignment.LEFT, padding = ' ')
     @Parsed(index = 2)
     private String origSysKey;
 
-    @Column(name = "BTBMS-TAR-SYS-ID", length = 4)
+    @Column(name = "TAR_SYS_ID", length = 4)
     @FixedWidth(value = 4, alignment = FieldAlignment.LEFT, padding = ' ')
     @Parsed(index = 3)
     private String tarSysId;
 
-    @Column(name = "BTBMS-ACC-NO", length = 14)
+    @Column(name = "ACCOUNT_NO", length = 14)
     @FixedWidth(value = 14, alignment = FieldAlignment.LEFT, padding = ' ')
     @Parsed(index = 4)
     private String accountNo;
 
-    @Column(name = "BTBMS-TRANS-CODE", length = 6)
+    @Column(name = "TRANS_CODE", length = 6)
     @FixedWidth(value = 6, alignment = FieldAlignment.LEFT, padding = ' ')
     @Parsed(index = 5)
     private String transCode;
 
-    @Column(name = "BTBMS-CR-DR-IND", length = 1)
+    @Column(name = "CR_DR_IND", length = 1)
     @FixedWidth(value = 1, alignment = FieldAlignment.LEFT, padding = ' ')
     @Parsed(index = 6)
     private String crDrInd;
 
-    @Column(name = "BTBMS-TRANS-AMT", length = 11)
+    @Column(name = "TRANS_AMT", length = 11)
     @Format(formats = "#0.00", options = "decimalSeparator=.")
     @FixedWidth(value = 11, alignment = FieldAlignment.LEFT, padding = ' ')
     @Parsed(index = 7)
     private double transAmt;
 
-    @Column(name = "BTBMS-BOT", length = 4)
+    @Column(name = "BOT", length = 4)
     @FixedWidth(value = 4, alignment = FieldAlignment.LEFT, padding = ' ')
     @Parsed(index = 8)
     private int bot;
 
-    @Column(name = "BTBMS-REF", length = 7)
+    @Column(name = "REF", length = 7)
     @FixedWidth(value = 7, alignment = FieldAlignment.LEFT, padding = ' ')
     @Parsed(index = 9)
     private String ref;
 
-    @Column(name = "BTBMS-BRAND-IND", length = 1)
+    @Column(name = "BRAND_IND", length = 1)
     @FixedWidth(value = 1, alignment = FieldAlignment.LEFT, padding = ' ')
     @Parsed(index = 10)
     private String brandInd;
 
-    @Column(name = "BTBMS-INSUFF-IND", length = 1)
+    @Column(name = "INSUFF_IND", length = 1)
     @FixedWidth(value = 1, alignment = FieldAlignment.LEFT, padding = ' ')
     @Parsed(index = 11)
     private String insuffInd;
 
-    @Column(name = "BTBMS-CA-VAL-DATE", length = 8)
+    @Column(name = "CA_VAL_DATE")
     @FixedWidth(value = 8, alignment = FieldAlignment.LEFT, padding = ' ')
     @Parsed(index = 12)
-    private String caValDate;
+    private Date caValDate;
 
-    @Column(name = "BTBMS-34REF1", length = 34)
+    @Column(name = "34REF1", length = 34)
     @FixedWidth(value = 34, alignment = FieldAlignment.LEFT, padding = ' ')
     @Parsed(index = 13)
     private String ref1;
 
-    @Column(name = "BTBMS-34REF2", length = 34)
+    @Column(name = "34REF2", length = 34)
     @FixedWidth(value = 34, alignment = FieldAlignment.LEFT, padding = ' ')
     @Parsed(index = 14)
     private String ref2;
 
-    @Column(name = "BTBMS-34REF3", length = 34)
+    @Column(name = "34REF3", length = 34)
     @FixedWidth(value = 34, alignment = FieldAlignment.LEFT, padding = ' ')
     @Parsed(index = 15)
     private String ref3;
 
-    @Column(name = "BTBMS-HOLD-IND", length = 1)
+    @Column(name = "HOLD_IND", length = 1)
     @FixedWidth(value = 1, alignment = FieldAlignment.LEFT, padding = ' ')
     @Parsed(index = 16)
     private String holdInd;
 
-    @Column(name = "BTBMS-NO-SUSPENSE-IND", length = 1)
+    @Column(name = "NO_SUSPENSE_IND", length = 1)
     @FixedWidth(value = 1, alignment = FieldAlignment.LEFT, padding = ' ')
     @Parsed(index = 17)
     private String noSuspenseInd;
 
-    @Column(name = "BTBMS-ACCNT-NO-IND", length = 1)
+    @Column(name = "ACCNT_NO_IND", length = 1)
     @FixedWidth(value = 1, alignment = FieldAlignment.LEFT, padding = ' ')
     @Parsed(index = 18)
     private String accntNoInd;
+
+    @Column(name = "PROCESS_DATE")
+    private Date processDate;
+
+    @Column(name = "FILE_GENERATOR_INDICATOR" , length = 1)
+    private Date fileGeneratorIndicator;
 
     @Transient
     @FixedWidth(value = 62, alignment = FieldAlignment.LEFT, padding = ' ')
@@ -211,11 +218,11 @@ public class Record {
         this.insuffInd = insuffInd;
     }
 
-    public String getCaValDate() {
+    public Date getCaValDate() {
         return caValDate;
     }
 
-    public void setCaValDate(String caValDate) {
+    public void setCaValDate(Date caValDate) {
         this.caValDate = caValDate;
     }
 
@@ -267,8 +274,24 @@ public class Record {
         this.accntNoInd = accntNoInd;
     }
 
+    public Date getProcessDate() {
+        return processDate;
+    }
+
+    public void setProcessDate(Date processDate) {
+        this.processDate = processDate;
+    }
+
+    public Date getFileGeneratorIndicator() {
+        return fileGeneratorIndicator;
+    }
+
+    public void setFileGeneratorIndicator(Date fileGeneratorIndicator) {
+        this.fileGeneratorIndicator = fileGeneratorIndicator;
+    }
+
     public String getFiller() {
-        return " ";
+        return filler;
     }
 
     public void setFiller(String filler) {
