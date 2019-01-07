@@ -1,0 +1,101 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>XYZ</title>
+<link rel="icon" href="images/favicon.png" type="image/x-icon">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="js/jquery.min.js?z=${cacheburst}"></script>
+<script src="js/bootstrap.min.js?z=${cacheburst}"></script>
+<script src="js/bootstrap-toggle.min.js?z=${cacheburst}"></script>
+<script src="js/eptValidation.js?z=${cacheburst}"></script>
+<style type="text/css">
+.navbar-header .navbar-brand {
+  height: 130px;
+}
+.nav {
+    position: absolute;
+    bottom: 37px;
+    right: 32%;
+}
+.container {
+	width: 1680px !important;
+}
+.navbar-right{
+	margin-right: -338px 
+}
+.navtextmiddle {
+	left: 606px
+}
+</style>
+</head>
+<body>
+	<div class="container">
+		<div class="col-md-12">
+			<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="/eptdatavalidation"><img src="images/logo.jpg" alt="Data validation"></a>
+				</div>
+				<div class="navbar-header nav navtextmiddle">
+					
+						<h2>XYZ DashBoard</h2>
+				</div>
+				
+				<ul class="nav navbar-nav navbar-right">
+			      <li><a href="#">Srikanth</a></li>
+			    </ul>
+			</div>
+			</nav>
+			 <h3>Data Validation</h3> 
+			<div class="form-group col-xs-3">
+				<!-- <form method="get" action="eptValidation" id="eptValidationDisplayForm">
+					<label class="radio-inline">
+				      <input type="radio" name="eptDataVal" id="ept" value="ept" onchange="submitChanges(this)" ${(eptDataVal == null ||eptDataVal == '' || eptDataVal =='ept')?'checked':''}>EPT
+				    </label>
+				    <label class="radio-inline">
+				      <input type="radio" name="eptDataVal" id="cept" value="cept" onchange="submitChanges(this)" ${eptDataVal =='cept'?'checked':''}>CEPT
+				    </label>
+				    <label class="radio-inline">
+				      <input type="radio" name="eptDataVal" id="emt" value="emt" onchange="submitChanges(this)" ${eptDataVal =='emt'?'checked':''}>EMT
+				    </label>
+				    <label class="radio-inline">
+				      <input type="radio" name="eptDataVal" id="dwp" value="dwp" onchange="submitChanges(this)" ${eptDataVal =='dwp'?'checked':''}>DCPT
+				    </label>
+				    <label class="radio-inline">
+				      <input type="radio" name="eptDataVal" id="fvpt" value="fvpt" onchange="submitChanges(this)" ${eptDataVal =='fvpt'?'checked':''}>FVPT
+				    </label>
+				    <label class="radio-inline">
+				      <input type="radio" name="eptDataVal" id="dataFeed" value="%DATA_Feed" onchange="submitChanges(this)" ${(eptDataVal =='%DATA_Feed')?'checked':''}>Data Feed
+				    </label>
+			    </form> -->
+				<select class="form-control">
+					<option value="">TEST</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<table class="table table-bordered table-hover">
+					<thead class="thead-default">
+						<tr>
+							<th>#</th>
+							<th>Source Feed Name</th>
+							<th>Feed Type</th>							
+							<th>Feed Count</th>
+							<th>Exceptions Count</th>							
+						</tr>
+					</thead>
+					<tbody>					
+						<tr>
+							<td scope="row">1</td>							
+								<td>XYZ1</td>							
+								<td>XYZ2</td>							
+								<td>XYZ3</td>							
+								<td>XYZ4</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
